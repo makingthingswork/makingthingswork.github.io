@@ -191,7 +191,7 @@ var theme = {
 				this.postContent = this.filterData.find(result => {return result.id === postId; });
 			},
 			checkField(value){
-				var styles = (typeof value !== 'undefined' && value !== null && value !== '') ? '' : 'display:none;';
+				var styles = (typeof value !== 'undefined' && value !== null && value !== '' && value != false) ? '' : 'display:none;';
 				return styles;
 			},
 			createUrlLink(url){
