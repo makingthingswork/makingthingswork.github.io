@@ -570,9 +570,19 @@ video {
 Custom CSS
 */
 
+html, body {
+  height: 100%;
+}
+
 html.no-scroll,
 html.no-scroll body {
   overflow: hidden;
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  height: auto !important;
 }
 
 button {
@@ -1068,10 +1078,6 @@ footer ul a:hover:before {
   margin-bottom: 2.25rem;
 }
 
-.mt-20 {
-  margin-top: 5rem;
-}
-
 .mr-auto {
   margin-right: auto;
 }
@@ -1148,12 +1154,28 @@ footer ul a:hover:before {
   padding-bottom: 4rem;
 }
 
+.pt-20 {
+  padding-top: 5rem;
+}
+
+.pb-31 {
+  padding-bottom: 7.75rem;
+}
+
 .fixed {
   position: fixed;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .relative {
   position: relative;
+}
+
+.bottom-0 {
+  bottom: 0px;
 }
 
 * {
@@ -1197,14 +1219,6 @@ footer ul a:hover:before {
 
 .capitalize {
   text-transform: capitalize;
-}
-
-.underline {
-  text-decoration: underline;
-}
-
-.hover\:no-underline:hover {
-  text-decoration: none;
 }
 
 .antialiased {
