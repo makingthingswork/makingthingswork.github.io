@@ -12,9 +12,20 @@ Custom CSS
 /**
 Custom CSS
 */
+html,
+body {
+  @apply h-full;
+}
+
 html.no-scroll,
 html.no-scroll body {
   overflow: hidden;
+}
+
+.wrapper {
+  @apply relative;
+  @apply min-h-full;
+  height: auto !important;
 }
 
 button {
