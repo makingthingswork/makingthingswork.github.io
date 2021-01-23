@@ -22,95 +22,98 @@
   <link rel="apple-touch-icon-precomposed" href="assets/img/icons/apple-touch-icon.png" />
   <link href="assets/css/style.min.css" type="text/css" rel="stylesheet" />
 </head>
-<body class="bg-grey-dark antialiased" x-data="{...theme.init(),...theme.content()}" x-init="() => { posts(); categories() }">
-	<header class="bg-grey-dark bg-opacity-95 fixed z-20 pin w-full">
-		<nav class="flex justify-between px-6 py-5 container mx-auto" role="navigation">
-			<a href="javascript:location='mailto:\u0068\u0065\u006c\u006c\u006f\u0040\u006d\u0061\u006b\u0069\u006e\u0067\u0074\u0068\u0069\u006e\u0067\u0073\u0077\u006f\u0072\u006b\u002e\u006f\u0072\u0067';void 0" aria-label="Email" class="relative text-left text-primary text-lg sm:text-xl md:text-2xl font-extrabold">Making Things Work</a>
-			<div class="flex items-center">
-				<button onclick="modal(this)" data-target="information" aria-label="Information" class="mr-4">
-					<svg aria-hidden="true" class="h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-					</svg>
-				</button>
-				<button onclick="modal(this)" data-target="theme" aria-label="Theme Colour">
-					<svg aria-hidden="true" class="h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01">
-					</svg>
-				</button>
-			</div>
-		</nav>
-	</header>
-	<!-- / header -->
-	<main class="relative mt-20">
-		<div class="bg-grey-dark w-full filter">
-			<div class="container mx-auto overflow-hidden">
-				<div class="categories px-6 pb-5 whitespace-nowrap overflow-x-auto">
-				    <div class="inline-block text-primary font-extrabold">
-				    	<ul class="flex text-primary font-extrabold">
-					    	<li class="mr-8 inline-block relative">
-					    		<input type="radio" name="selected-cat" id="all" @click="filterByCategory()" checked>
-					    		<label for="all">All</label>
-					    	</li>
-					    	<template x-if="categoriesData">
-									<template x-for="(category, index) in categoriesData" :key="index">
-										<li class="mr-8 inline-block relative">
-											<input type="radio" name="selected-cat" :id="[category.slug]" @click="filterByCategory(category.id)">
-											<label :for="[category.slug]" x-text="[category.name]"></label>
-										</li>
-					        </template>
-			          </template>
-		           </ul>
-				    </div>
-				</div>
-			</div>
-		</div>
-		<!-- / filter -->
-		<div class="flex px-6 pt-0 container mx-auto">
-			<div class="grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-x-8 gap-y-12">
-				<template x-if="filterData">
-					<template x-for="(post, index) in filterData" :key="index">
-						<article class="block project">
-							<button class="block text-left" @click="readMore(post.id)" onclick="modal(this)" data-target="post" :aria-label="[post.title.rendered]">
-								<div class="relative block w-full h-auto thumb bg-primary overflow-hidden" :style="backgroundImage([post.featured_blackandwhite_image_src])">
-									<div class="img opacity-0">
-										<img class="border-none max-w-none w-full h-auto p-0" width="600" height="650" :src="[post.featured_image_src]" :alt=[post.excerpt.rendered]>
-									</div>
-								</div>
-								<p class="font-extrabold text-primary leading-tight text-lg mt-4 mb-2" x-text="[post.title.rendered]"></p>
-								<div class="font-regular text-grey-light mb-2" x-html="[post.excerpt.rendered]"></div>
-								<p class="relative read-more text-primary font-extrabold">Read more</p>
-							</button>
-						</article>
-					</template>
-				</template>
-			</div>
-			<!-- / grid -->
-		</div>
-	</main>
-	<!-- / main -->
-	<footer class="mt-20">
-		<div class="flex justify-between container mx-auto px-6 pb-5">
-			<div class="flex flex-col-reverse md:flex-row text-primary text-xs font-extrabold items-end container mx-auto">
-				<div class="flex-initial w-full md:w-80">
-					<p>Making Things Work &copy;&nbsp;<span class="year"></span></p>
-				</div>
-				<div class="flex-initial w-full md:w-auto">
-					<ul>
-						<li class="inline-block mr-5"><a href="javascript:location='mailto:\u0068\u0065\u006c\u006c\u006f\u0040\u006d\u0061\u006b\u0069\u006e\u0067\u0074\u0068\u0069\u006e\u0067\u0073\u0077\u006f\u0072\u006b\u002e\u006f\u0072\u0067';void 0"  class="relative font-extrabold">Contact</a></li>
-						<li class="inline-block mr-5"><button onclick="modal(this)" data-target="gdpr" class="relative font-extrabold" aria-label="GDPR">GDPR</button></li>
-					</ul>
-				</div>
-			</div>
-			<div class="flex items-end">
-				<button onclick="backToTop()" aria-label="Back to top" class="back-to-top">
-					<svg aria-hidden="true" class="h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18">
-					</svg>
-				</button>
-			</div>
-		</div>
-	</footer>
-	<!-- / footer -->
+<body class="bg-grey-dark antialiased " x-data="{...theme.init(),...theme.content()}" x-init="() => { posts(); categories() }">
+	<div class="wrapper">
+    <header class="bg-grey-dark bg-opacity-95 fixed z-20 pin w-full">
+      <nav class="flex justify-between px-6 py-5 container mx-auto" role="navigation">
+        <a href="javascript:location='mailto:\u0068\u0065\u006c\u006c\u006f\u0040\u006d\u0061\u006b\u0069\u006e\u0067\u0074\u0068\u0069\u006e\u0067\u0073\u0077\u006f\u0072\u006b\u002e\u006f\u0072\u0067';void 0" aria-label="Email" class="relative text-left text-primary text-lg sm:text-xl md:text-2xl font-extrabold">Making Things Work</a>
+        <div class="flex items-center">
+          <button onclick="modal(this)" data-target="information" aria-label="Information" class="mr-4">
+            <svg aria-hidden="true" class="h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+            </svg>
+          </button>
+          <button onclick="modal(this)" data-target="theme" aria-label="Theme Colour">
+            <svg aria-hidden="true" class="h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01">
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <!-- / header -->
+    <main class="relative pt-20 pb-31">
+      <div class="bg-grey-dark w-full filter">
+        <div class="container mx-auto overflow-hidden">
+          <div class="categories px-6 pb-5 whitespace-nowrap overflow-x-auto">
+              <div class="inline-block text-primary font-extrabold">
+                <ul class="flex text-primary font-extrabold">
+                  <li class="mr-8 inline-block relative">
+                    <input type="radio" name="selected-cat" id="all" @click="filterByCategory()" checked>
+                    <label for="all">All</label>
+                  </li>
+                  <template x-if="categoriesData">
+                    <template x-for="(category, index) in categoriesData" :key="index">
+                      <li class="mr-8 inline-block relative">
+                        <input type="radio" name="selected-cat" :id="[category.slug]" @click="filterByCategory(category.id)">
+                        <label :for="[category.slug]" x-text="[category.name]"></label>
+                      </li>
+                    </template>
+                  </template>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+      <!-- / filter -->
+      <div class="flex px-6 pt-0 container mx-auto">
+        <div class="grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-x-8 gap-y-12">
+          <template x-if="filterData">
+            <template x-for="(post, index) in filterData" :key="index">
+              <article class="block project">
+                <button class="block text-left" @click="readMore(post.id)" onclick="modal(this)" data-target="post" :aria-label="[post.title.rendered]">
+                  <div class="relative block w-full h-auto thumb bg-primary overflow-hidden" :style="backgroundImage([post.featured_blackandwhite_image_src])">
+                    <div class="img opacity-0">
+                      <img class="border-none max-w-none w-full h-auto p-0" width="600" height="650" :src="[post.featured_image_src]" :alt=[post.excerpt.rendered]>
+                    </div>
+                  </div>
+                  <p class="font-extrabold text-primary leading-tight text-lg mt-4 mb-2" x-text="[post.title.rendered]"></p>
+                  <div class="font-regular text-grey-light mb-2" x-html="[post.excerpt.rendered]"></div>
+                  <p class="relative read-more text-primary font-extrabold">Read more</p>
+                </button>
+              </article>
+            </template>
+          </template>
+        </div>
+        <!-- / grid -->
+      </div>
+    </main>
+    <!-- / main -->
+    <footer class="absolute bottom-0 w-full">
+      <div class="flex justify-between container mx-auto px-6 pb-5">
+        <div class="flex flex-col-reverse md:flex-row text-primary text-xs font-extrabold items-end container mx-auto">
+          <div class="flex-initial w-full md:w-80">
+            <p>Making Things Work &copy;&nbsp;<span class="year"></span></p>
+          </div>
+          <div class="flex-initial w-full md:w-auto">
+            <ul>
+              <li class="inline-block mr-5"><a href="javascript:location='mailto:\u0068\u0065\u006c\u006c\u006f\u0040\u006d\u0061\u006b\u0069\u006e\u0067\u0074\u0068\u0069\u006e\u0067\u0073\u0077\u006f\u0072\u006b\u002e\u006f\u0072\u0067';void 0"  class="relative font-extrabold">Contact</a></li>
+              <li class="inline-block mr-5"><button onclick="modal(this)" data-target="gdpr" class="relative font-extrabold" aria-label="GDPR">GDPR</button></li>
+            </ul>
+          </div>
+        </div>
+        <div class="flex items-end">
+          <button onclick="backToTop()" aria-label="Back to top" class="back-to-top">
+            <svg aria-hidden="true" class="h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18">
+            </svg>
+          </button>
+        </div>
+      </div>
+    </footer>
+    <!-- / footer -->
+  </div>
+  <!-- / wrapper -->
 	<div class="z-50 overflow-x-hidden fixed pin w-full bg-grey-darker modal" role=”dialog” aria-modal=”true” id="post-modal">
 		<div class="modal-content">
 			<template x-if="postContent">
