@@ -1,10 +1,10 @@
 module.exports = {
   purge: {
-    enabled: true,
-    content: [
-    './**/*.html',
-    './_/assets/js/**/*.js'
-    ]
+    //enabled: true,
+    //content: [
+    //'./**/*.html',
+    //'./_/assets/js/**/*.js'
+    //]
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -49,6 +49,7 @@ module.exports = {
       },
       padding: {
         31: '7.75rem',
+        37: '9.25rem',
       },
       inset: {
         5.5: '1.375rem',
