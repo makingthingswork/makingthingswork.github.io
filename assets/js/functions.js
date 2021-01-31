@@ -2,6 +2,8 @@
 
 /* globals jsonObject */
 /* exported jsonObject */
+/* globals bodyScrollLock */
+/* exported bodyScrollLock */
 /* eslint-disable no-unused-vars */
 
 const win = window, 
@@ -58,9 +60,6 @@ win.addEventListener('DOMContentLoaded', (event) => {
 
 win.addEventListener('load', (event) => {
   log('Page is fully loaded including dependent resources.');
-  //const articles = doc.querySelectorAll('articles');
-  //console.log(articles);
-  //[...articles].map(result => result.style.backgroundImage = 'url('+result.getAttribute('data-background-src')+')');
 	_$('main').classList.add('reveal');		// Reveal main content
 	_$('footer').classList.add('reveal');	// Reveal footer content
 });
@@ -90,12 +89,11 @@ var modal = btn => {
 	var target = btn.getAttribute('data-target');															// Get modal to target from data-target
 	var el = _$(`#${target}-modal`);																					// Get the modal element
   el.classList.toggle('open');																							// Toggle modal class to 'open'
-  _$('body').classList.toggle('overflow-hidden');														// Toggle body class to 'overflow-hidden'
   el.getElementsByClassName('modal-content')[0].classList.toggle('reveal');	// Toggle modal content class to 'reveal'
+  (el.classList.contains('open')) ? 
+  bodyScrollLock.disableBodyScroll(el) : 
+  bodyScrollLock.enableBodyScroll(el);                                      // Toggle body-scrol-lock
 };
-
-//var modalButtons = doc.querySelectorAll('.modal-btn');
-//[...modalButtons].map(result => result.addEventListener('click', modal, false)); e.currentTarget
 
 /**
 * @desc     a class 'show' is added when the image has loaded
@@ -185,12 +183,12 @@ var theme = {
 			filterByCategory(cat){
         //this.filterData = (typeof cat !== 'undefined' && cat !== null) ? this.allData.filter(result => result.categories.includes(cat)) : this.allData;
         if(typeof cat !== 'undefined' && cat !== null){
-          const articles = doc.querySelectorAll('articles');
+          var articles = doc.querySelectorAll('articles');
           [...articles].map(result => result.style.backgroundImage = 'block');
         }else{
-          const articles = doc.querySelectorAll('articles');
+          articles = doc.querySelectorAll('articles');
           [...articles].map(result => result.style.backgroundImage = 'none');
-          const articles = doc.querySelectorAll('articles[data-categories~="'+cat+'"]');
+          articles = doc.querySelectorAll('articles[data-categories~="'+cat+'"]');
           [...articles].map(result => result.style.backgroundImage = 'block');
         }
       },
