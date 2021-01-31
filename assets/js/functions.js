@@ -57,7 +57,10 @@ win.addEventListener('DOMContentLoaded', (event) => {
 });
 
 win.addEventListener('load', (event) => {
-	log('Page is fully loaded including dependent resources.');
+  log('Page is fully loaded including dependent resources.');
+  //const articles = doc.querySelectorAll('articles');
+  //console.log(articles);
+  //[...articles].map(result => result.style.backgroundImage = 'url('+result.getAttribute('data-background-src')+')');
 	_$('main').classList.add('reveal');		// Reveal main content
 	_$('footer').classList.add('reveal');	// Reveal footer content
 });
@@ -180,15 +183,28 @@ var theme = {
           });
 			},
 			filterByCategory(cat){
-				this.filterData = (typeof cat !== 'undefined' && cat !== null) ? this.allData.filter(result => result.categories.includes(cat)) : this.allData;
-			},
+        //this.filterData = (typeof cat !== 'undefined' && cat !== null) ? this.allData.filter(result => result.categories.includes(cat)) : this.allData;
+        if(typeof cat !== 'undefined' && cat !== null){
+          const articles = doc.querySelectorAll('articles');
+          [...articles].map(result => result.style.backgroundImage = 'block');
+        }else{
+          const articles = doc.querySelectorAll('articles');
+          [...articles].map(result => result.style.backgroundImage = 'none');
+          const articles = doc.querySelectorAll('articles[data-categories~="'+cat+'"]');
+          [...articles].map(result => result.style.backgroundImage = 'block');
+        }
+      },
+      getCategoryClasses(categories){
+        console.log(categories);
+      },
 			backgroundImage(imgUrl){
+        //console.log(imgUrl);
 				var styles = `background-image:url(${imgUrl})`;
 				return styles;
 			},
 			readMore(postId){
 				this.postContent = null;
-				this.postContent = this.filterData.find(result => {return result.id === postId; });
+				this.postContent = this.filterData.find(result => { return result.id === postId; });
 			},
 			checkField(value){
 				var styles = (typeof value !== 'undefined' && value !== null && value !== '' && value != false) ? '' : 'display:none;';
