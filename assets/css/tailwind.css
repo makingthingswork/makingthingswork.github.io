@@ -162,10 +162,13 @@ button:not(.active):hover span:before {
   @apply bg-100;
 }
 
-button:hover .thumb .img {
-  @apply opacity-100;
+button .thumb .img {
   -webkit-transition: opacity 300ms ease-in;
   transition: opacity 300ms ease-in;
+}
+
+button:hover .thumb .img {
+  @apply opacity-100;
 }
 
 .read-more:before {
