@@ -114,7 +114,7 @@
     <!-- / footer -->
   </div>
   <!-- / wrapper -->
-	<div class="z-50 overflow-x-hidden fixed pin w-full bg-grey-darker modal" role=”dialog” aria-modal=”true” id="post-modal">
+	<div class="z-50 overflow-x-hidden fixed pin w-full bg-grey-darker modal" role="dialog" aria-modal="true" id="post-modal">
 		<div class="modal-content">
 			<template x-if="postContent">
 			<div>
@@ -169,7 +169,7 @@
 		</div>
 	</div>
 	<!-- / post-modal -->
-	<div class="z-50 overflow-x-hidden fixed pin w-full bg-grey-darker modal" role=”dialog” aria-modal=”true” id="information-modal">
+	<div class="z-50 overflow-x-hidden fixed pin w-full bg-grey-darker modal" role="dialog" aria-modal="true" id="information-modal">
 		<div class="modal-content">
 			<div class="px-6 pt-5 container mx-auto text-right">
 				<button onclick="modal(this)" data-target="information" aria-label="Back" class="close">
@@ -189,7 +189,7 @@
 		</div>
 	</div>
 	<!-- / information-modal -->
-	<div class="z-50 overflow-x-hidden fixed pin w-full bg-grey-darker modal" role=”dialog” aria-modal=”true” id="gdpr-modal">
+	<div class="z-50 overflow-x-hidden fixed pin w-full bg-grey-darker modal" role="dialog" aria-modal="true" id="gdpr-modal">
 		<div class="modal-content">
 			<div class="px-6 pt-5 container mx-auto text-right">
 				<button onclick="modal(this)" data-target="gdpr" aria-label="Back" class="close">
@@ -210,10 +210,19 @@
 					</div>
 				</div>
 			</div>
+			<div class="px-6 py-5">
+				<div class="container mx-auto text-right">
+					<button onclick="backToTop('gdpr')" aria-label="Back to top" class="back-to-top">
+						<svg class="h-6 w-6 text-grey-light" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18">
+						</svg>
+					</button>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- / gdpr-modal -->
-	<div class="z-50 overflow-x-hidden fixed pin w-full bg-primary modal" role=”dialog” aria-modal=”true” id="theme-modal">
+	<div class="z-50 overflow-x-hidden fixed pin w-full bg-primary modal" role="dialog" aria-modal="true" id="theme-modal">
 		<div class="modal-content">
 			<div class="px-6 pt-5 relative container mx-auto text-right">
 				<button onclick="modal(this)" data-target="theme" aria-label="Back" class="close">
