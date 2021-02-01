@@ -112,9 +112,9 @@ var checkImageLoaded = img => {
 * @task		  sets display to display or none
 */
 var filterByCategory = btn => {
-  var cat = btn.getAttribute('data-category');
-  var articles;
-  if(typeof cat !== 'undefined' && cat !== null){
+  var cat = btn.getAttribute('data-category');                                // Get the category from the clicked button
+  var articles;                                                               // Declare variable articles
+  if(typeof cat !== 'undefined' && cat !== null){                             // Check if its a valid number then show/hide appropriately
     articles = doc.querySelectorAll('article');
     [...articles].map(result => result.style.display = 'none');
     articles = doc.querySelectorAll('article[data-categories*="'+cat+'"]');
