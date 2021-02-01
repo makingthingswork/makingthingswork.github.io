@@ -49,13 +49,13 @@
               <div class="inline-block text-primary font-extrabold">
                 <ul class="flex text-primary font-extrabold">
                   <li class="mr-8 inline-block relative">
-                    <input type="radio" name="selected-cat" id="all" @click="filterByCategory()" checked>
+                    <input type="radio" name="selected-cat" id="all" onclick="filterByCategory(this)" checked>
                     <label for="all">All</label>
                   </li>
                   <template x-if="categoriesData">
                     <template x-for="(category, index) in categoriesData" :key="index">
                       <li class="mr-8 inline-block relative">
-                        <input type="radio" name="selected-cat" :id="[category.slug]" @click="filterByCategory(category.id)">
+                        <input type="radio" name="selected-cat" :id="[category.slug]" onclick="filterByCategory(this)" :data-category="[category.id]">
                         <label :for="[category.slug]" x-text="[category.name]"></label>
                       </li>
                     </template>
