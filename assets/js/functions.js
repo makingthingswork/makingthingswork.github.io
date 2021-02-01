@@ -106,6 +106,26 @@ var checkImageLoaded = img => {
 };
 
 /**
+* @desc     adjusts the display state based on filter choices
+* @method   filterByCategory
+* @param    object btn the clicked button element
+* @task		  sets display to display or none
+*/
+var filterByCategory = btn => {
+  var cat = btn.getAttribute('data-category');
+  var articles;
+  if(typeof cat !== 'undefined' && cat !== null){
+    articles = doc.querySelectorAll('article');
+    [...articles].map(result => result.style.display = 'none');
+    articles = doc.querySelectorAll('article[data-categories*="'+cat+'"]');
+    [...articles].map(result => result.style.display = 'block');
+  }else{
+    articles = doc.querySelectorAll('article');
+    [...articles].map(result => result.style.display = 'block');
+  }
+};
+
+/**
 * @desc     scrolls the user back to the top
 * @method   backToTop
 * @param    string val part of the id of the target modal
@@ -180,21 +200,9 @@ var theme = {
               this.categoriesData = data;
           });
 			},
-			filterByCategory(cat){
+			//filterByCategory(cat){
         //this.filterData = (typeof cat !== 'undefined' && cat !== null) ? this.allData.filter(result => result.categories.includes(cat)) : this.allData;
-        if(typeof cat !== 'undefined' && cat !== null){
-          var articles = doc.querySelectorAll('articles');
-          [...articles].map(result => result.style.backgroundImage = 'block');
-        }else{
-          articles = doc.querySelectorAll('articles');
-          [...articles].map(result => result.style.backgroundImage = 'none');
-          articles = doc.querySelectorAll('articles[data-categories~="'+cat+'"]');
-          [...articles].map(result => result.style.backgroundImage = 'block');
-        }
-      },
-      getCategoryClasses(categories){
-        console.log(categories);
-      },
+      //},
 			backgroundImage(imgUrl){
         //console.log(imgUrl);
 				var styles = `background-image:url(${imgUrl})`;
