@@ -106,7 +106,7 @@ var checkImageLoaded = img => {
 };
 
 /**
-* @desc     adjusts the display state based on filter choices
+* @desc     adjusts the display state based on filter choice
 * @method   filterByCategory
 * @param    object btn the clicked button element
 * @task		  sets display to display or none
