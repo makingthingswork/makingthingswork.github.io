@@ -11,6 +11,14 @@
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^10.1.0",
+    "gulp-rename": "^2.0.0",
     "tailwindcss": "^2.0.2"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-postcss": "^9.0.0",
+    "gulp-uglify": "^3.0.2",
+    "postcss": "^8.2.1"
   }
 }
