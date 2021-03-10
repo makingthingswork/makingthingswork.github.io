@@ -6,6 +6,9 @@ Custom CSS
   --primary: #989ea3;
 }
 
+/*! tailwindcss v2.0.3 | MIT License | https://tailwindcss.com
+*/
+
 /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
 /*
@@ -414,15 +417,18 @@ textarea {
 }
 
 input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1;
   color: #a1a1aa;
 }
 
 input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  opacity: 1;
   color: #a1a1aa;
 }
 
 input::placeholder,
 textarea::placeholder {
+  opacity: 1;
   color: #a1a1aa;
 }
 
@@ -598,27 +604,27 @@ main, footer, .modal-content {
 }
 
 .yellow {
-  --primary: #fff200;
+  --primary: #fff766;
 }
 
 .orange {
-  --primary: #ff9540;
+  --primary: #ffb173;
 }
 
 .green {
-  --primary: #3cd25f;
+  --primary: #65dc81;
 }
 
 .blue {
-  --primary: #00aeef;
+  --primary: #56d1ff;
 }
 
 .purple {
-  --primary: #af63fe;
+  --primary: #c996fe;
 }
 
 .pink {
-  --primary: #eb7b98;
+  --primary: #f2a7bb;
 }
 
 .pin {
@@ -1182,6 +1188,11 @@ footer ul a:hover:before {
 
 * {
   --tw-shadow: 0 0 #0000;
+}
+
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 * {
