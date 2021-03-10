@@ -34,12 +34,12 @@ module.exports = {
         light: '#989ea3',
       },
       mtw: {
-        yellow: '#fff200', // #fff200 or #fff766 20% lighten version
-        orange: '#ff9540', // #ff9540 or #ffb173 10% lighten version
-        green: '#3cd25f', // #3cd25f or #65dc81 20% lighten version
-        blue: '#00aeef', // #00aeef or #56d1ff 10% lighten version
-        purple: '#af63fe', // #af63fe or #c996fe 10% lighten version
-        pink: '#eb7b98', // #eb7b98 or #f2a7bb 10% lighten version
+        yellow: '#fff766', // #fff200 or #fff766 20% lighten version
+        orange: '#ffb173', // #ff9540 or #ffb173 10% lighten version
+        green: '#65dc81', // #3cd25f or #65dc81 20% lighten version
+        blue: '#56d1ff', // #00aeef or #56d1ff 10% lighten version
+        purple: '#c996fe', // #af63fe or #c996fe 10% lighten version
+        pink: '#f2a7bb', // #eb7b98 or #f2a7bb 10% lighten version
       },
     },
     extend: {
