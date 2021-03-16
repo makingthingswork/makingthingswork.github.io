@@ -258,18 +258,21 @@
 /* <![CDATA[ */ var jsonObject = {colors:["pink","purple","blue","green","yellow","orange"]}; /* ]]> */
 </script>
 <script src="assets/js/functions.min.js"></script>
-<!-- Statcounter code  -->
-<script type="text/javascript">
-	var sc_project=12496665; 
-	var sc_invisible=1; 
-	var sc_security="8be1257e"; 
-	var sc_https=1; 
-	var sc_remove_link=1; 
+<script>
+	var env = (window.location.hostname = 'makingthingswork.org')? 'production' : 'development';
+	console.log(window.location.hostname);
+	if(env = 'production'){
+		var sc_project=12496665; 
+		var sc_invisible=1; 
+		var sc_security="8be1257e"; 
+		var sc_https=1; 
+		var sc_remove_link=1; 
+		document.write("<script type='text/javascript' src='https://www.statcounter.com/counter/counter.js' async></"+"script>");
+	}
 </script>
-<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
 <noscript><div class="statcounter"><img class="statcounter"
 	src="https://c.statcounter.com/12496665/0/8be1257e/1/" alt="Web
 	Analytics"></div></noscript>
-	<!-- End of Statcounter Code -->
+<!-- End of Statcounter Code -->
 </body>
 </html>
